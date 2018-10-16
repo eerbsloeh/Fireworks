@@ -2,6 +2,8 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Firework {
@@ -9,7 +11,7 @@ public class Firework {
 	public static Random random = new Random();
 
 	public static int STATE_ASCENDING = 1, STATE_EXPLODED = 2, STATE_FINISHED = 3;
-	public static float gravity = 0;
+	public static float gravity = 2;
 	
 	private int state;
 	private int lifeLengthExplode;
@@ -25,6 +27,8 @@ public class Firework {
 	
 	Spark[] sparks;
 	
+	ArrayList<Point> lastPos;
+	
 	public Firework(int posX, int posY, int lifeLength, int afterglow) {
 		this.posX = posX;
 		this.posY = posY;
@@ -36,6 +40,8 @@ public class Firework {
 		this.color = Color.BLUE;
 		
 		sparks = new Spark[random.nextInt(13)+7];
+		
+		lastPos = new ArrayList<>();
 		
 	}
 	
@@ -50,6 +56,14 @@ public class Firework {
 		
 		moveY += gravity;
 		
+		lastPos.add(0, new Point(posX, posY));
+		
+		try {
+			lastPos.remove(4);
+		} catch(Exception ex) {
+			//do nothing
+		}
+		
 		if (lifeCount == lifeLengthExplode) {
 			explode();
 		}
@@ -62,6 +76,7 @@ public class Firework {
 			
 			//b.addForce((r.nextInt(60)-30) * 2, (r.nextInt(40)-30) * 2);
 			sparks[i].applyForce(random.nextInt(60)-30, random.nextInt(40)-30);
+			
 		}
 		
 		this.state = STATE_EXPLODED;
@@ -84,8 +99,22 @@ public class Firework {
 			}
 		}
 		else if (state == STATE_ASCENDING){
+
 			g.setColor(color);
-			g.fillOval(posX, posY, sizeX, sizeY);
+
+			for (int i = 0; i < lastPos.size(); i++) {
+				Point p = lastPos.get(i);
+				
+				int sizeX = this.sizeX - i*2;
+				int sizeY = this.sizeY - i*2;
+				
+				//p.x += (this.sizeX - sizeX)/2;
+				p.x += i-1;
+				
+				g.fillOval(p.x, p.y, sizeX, sizeY);
+				
+			}
+			
 		}
 		
 		if (lifeCount == lifeLength)	this.state = STATE_FINISHED;

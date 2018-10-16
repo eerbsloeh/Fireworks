@@ -38,6 +38,11 @@ public class Spark {
 		this.accY = accY;
 	}
 	
+	public void addForce(float accX, float accY) {
+		this.accX = accX;
+		this.accY = accY;
+	}
+	
 	public void paint(Graphics g) {
 		physicsTick();
 		

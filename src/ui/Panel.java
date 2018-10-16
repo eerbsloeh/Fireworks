@@ -8,17 +8,21 @@ public class Panel extends JPanel {
 
 	Firework f;
 	
-	
 	public Panel() {
 		super();
-		f = new Firework(Frame.size.height, Frame.size.width/2, 20);
+		
+		f = new Firework(Frame.size.width/2, Frame.size.height, 20, 10);
 		f.applyForce(0, -30);
 	}
 	
 	@Override
 	public void paint(Graphics g) {
 		
-		f.paint(g);
+		if (Frame.state == 2) {
+			if (f.paint(g)) {
+				f = null;
+			}
+		}
 		
 	}
 	

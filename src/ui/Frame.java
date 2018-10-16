@@ -12,7 +12,7 @@ public class Frame extends JFrame implements Runnable {
 	
 	public static Dimension size;
 	
-	private int state = 0;
+	public static int state = 0;
 	
 	private float currentDarkness = 0.01f;
 	private float darknessDiff = 0.03f;
@@ -38,10 +38,6 @@ public class Frame extends JFrame implements Runnable {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		
-		if (this.state == 2) {
-			paintChildren(g);
-		}
 	}
 	
 	private boolean darken() {
@@ -57,13 +53,13 @@ public class Frame extends JFrame implements Runnable {
 				Thread.sleep(50);
 				//System.out.println("Invisible");
 			}
-			this.state = 1;
+			state = 1;
 			while(darken()) {
 				Thread.sleep(darknessSpeed);
 				//System.out.println("Darken");
 			}
 			//System.out.println("Done");
-			this.state = 2;
+			state = 2;
 			while (true) {
 				Thread.sleep(sleepTime);
 				repaint();

@@ -35,7 +35,7 @@ public class Firework {
 		
 		this.color = Color.BLUE;
 		
-		sparks = new Spark[7];
+		sparks = new Spark[random.nextInt(13)+7];
 		
 	}
 	
@@ -59,7 +59,9 @@ public class Firework {
 		
 		for (int i = 0; i < sparks.length; i++) {
 			sparks[i] = new Spark(posX, posY);
-			sparks[i].applyForce(random.nextFloat()*15, random.nextFloat()*15);
+			
+			//b.addForce((r.nextInt(60)-30) * 2, (r.nextInt(40)-30) * 2);
+			sparks[i].applyForce(random.nextInt(60)-30, random.nextInt(40)-30);
 		}
 		
 		this.state = STATE_EXPLODED;

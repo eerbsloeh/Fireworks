@@ -10,17 +10,21 @@ public class Firework {
 	
 	public static Random random = new Random();
 
+	//static
 	public static int STATE_ASCENDING = 1, STATE_EXPLODED = 2, STATE_FINISHED = 3;
 	public static float gravity = 2;
 	
+	//logic
 	private int state;
 	private int lifeLengthExplode;
 	private int lifeLength;
 	private int lifeCount = 0;
 	
+	//graphic
 	private Color color;
 	private int sizeX = 10, sizeY = 10;
 	
+	//movement
 	int posX, posY;
 	float moveX, moveY;
 	float accX, accY;

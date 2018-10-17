@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
+import ui.Spark;
 
 public class Firework {
 	
@@ -22,7 +23,7 @@ public class Firework {
 	
 	//graphic
 	private Color color;
-	private int sizeX = 10, sizeY = 10;
+	private int sizeX = 11, sizeY = 11;
 	
 	//movement
 	int posX, posY;
@@ -158,7 +159,7 @@ public class Firework {
 				int sizeY = this.sizeY - i*2;
 				
 				//p.x += (this.sizeX - sizeX)/2;
-				p.x += i-1;
+				p.x += i/2;
 				
 				g.fillOval(p.x, p.y, sizeX, sizeY);
 				

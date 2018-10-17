@@ -49,6 +49,51 @@ public class Firework {
 		
 	}
 	
+	
+	//useless method just to make codebeat cringe
+	public void useless(int a, int b, int c, float d, float e, float f, boolean g, boolean h, boolean i) {
+		
+		a = b;
+		b = c;
+		c = d;
+		d = e;
+		e = f;
+		f = g;
+		g = h;
+		h = i;
+		i = a;
+		a = b;
+		b = c;
+		c = d;
+		d = e;
+		e = f;
+		f = g;
+		g = h;
+		h = i;
+		i = a;
+		a = b;
+		b = c;
+		c = d;
+		d = e;
+		e = f;
+		f = g;
+		g = h;
+		h = i;
+		i = a;
+		a = b;
+		b = c;
+		c = d;
+		d = e;
+		e = f;
+		f = g;
+		g = h;
+		h = i;
+		i = a;
+		
+	}
+	
+	
+	
 	private void physicsTick() {
 		moveX += accX;
 		moveY += accY;
